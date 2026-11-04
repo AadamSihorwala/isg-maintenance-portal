@@ -14,11 +14,11 @@
     .brand-text p { font-size: 0.8rem; color: #92b0d5; }
     .container { max-width: 1000px; margin: 25px auto; padding: 0 15px; }
     .summary-bar { display: flex; border: 1px solid #cbd5e1; border-radius: 6px; background: #ffffff; margin-bottom: 20px; overflow: hidden; }
-    .summary-box { flex: 1; padding: 12px 15px; border-right: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; }
+    .summary-box { flex: 1; padding: 12px 15px; border-right: 1px solid #cbd5e1; display: flex; align-items: center; justify-content: space-between; }
     .summary-box:last-child { border-right: none; }
     .summary-label { font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
     .summary-count { font-size: 1.25rem; font-weight: 700; color: #0f172a; }
-    .summary-box.urgent-box { background-color: #fef2f2; }
+    .summary-box.urgent-box { background: #fef2f2; }
     .summary-box.urgent-box .summary-count { color: #dc2626; }
     .dashboard-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; gap: 10px; flex-wrap: wrap; }
     .filter-group { display: flex; gap: 5px; }
@@ -26,15 +26,15 @@
     .filter-btn.active { background-color: #0d233a; color: white; border-color: #0d233a; }
     .search-input { padding: 6px 10px; font-size: 0.85rem; border: 1px solid #cbd5e1; border-radius: 4px; width: 220px; }
     .ticket-list { display: flex; flex-direction: column; gap: 12px; }
-    .ticket-item { border: 1px solid #e2e8f0; border-left: 4px solid #94a3b8; border-radius: 4px; padding: 14px; background-color: #ffffff; }
-    .ticket-item.urgent { border-left-color: #dc2626; background-color: #fffbfb; }
+    .ticket-item { border: 1px solid #e2e8f0; border-left: 4px solid #94a3b8; border-radius: 4px; padding: 14px; background: #ffffff; }
+    .ticket-item.urgent { border-left-color: #dc2626; background: #fffbfb; }
     .ticket-item.resolved { border-left-color: #16a34a; opacity: 0.85; }
     .ticket-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
     .ticket-title { font-weight: 700; font-size: 0.95rem; color: #1e293b; }
     .ticket-teacher { font-size: 0.85rem; color: #64748b; margin-top: 2px; }
     .status-badge { font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 3px; text-transform: uppercase; }
-    .badge-urgent { background: #fee2e2; color: #991b1b; }
     .badge-regular { background: #e0f2fe; color: #075985; }
+    .badge-urgent { background: #fee2e2; color: #991b1b; }
     .badge-pending { background: #fef3c7; color: #92400e; }
     .badge-progress { background: #e0e7ff; color: #3730a3; }
     .badge-resolved { background: #dcfce7; color: #166534; }
@@ -42,194 +42,178 @@
     .ticket-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid #f1f5f9; }
     .status-controls button { background: #f8fafc; border: 1px solid #cbd5e1; padding: 4px 8px; font-size: 0.75rem; font-weight: 600; border-radius: 3px; cursor: pointer; margin-left: 4px; color: #334155; }
     .status-controls button:hover { background: #e2e8f0; }
-    .empty-state { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; background: white; border-radius: 6px; border: 1px solid #dcdfe6; }
+    .empty-state { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; background: white; border-radius: 6px; }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="brand">
-      <img src="https://play-lh.googleusercontent.com/GTrzlKTjPY5FmfHB4F1Mnn2bdIefIRXNAMBU9WGp4HcQ0QsFa1fA34gz3GdT7OcB9z6N1FNTuAHgwHQdPpVFSw=w600-h300-pc0xffffff-pd" alt="ISG Logo" class="school-logo">
-      <div class="brand-text">
-        <h1>Indian School Al Ghubra</h1>
-        <p>Office Maintenance Dashboard (Restricted)</p>
-      </div>
+<header>
+  <div class="brand">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><circle cx='24' cy='24' r='24' fill='%230d233a'/></svg>" alt="ISG Logo" class="school-logo">
+    <div class="brand-text">
+      <h1>Indian School Al Ghubra</h1>
+      <p>Office Maintenance Dashboard (Restricted)</p>
     </div>
-  </header>
+  </div>
+</header>
 
-  <div class="container">
-    
-    <div class="summary-bar">
-      <div class="summary-box">
-        <span class="summary-label">Total</span>
-        <span class="summary-count" id="countTotal">0</span>
-      </div>
-      <div class="summary-box urgent-box">
-        <span class="summary-label">Urgent</span>
-        <span class="summary-count" id="countUrgent">0</span>
-      </div>
-      <div class="summary-box">
-        <span class="summary-label">In Progress</span>
-        <span class="summary-count" id="countProgress">0</span>
-      </div>
-      <div class="summary-box">
-        <span class="summary-label">Resolved</span>
-        <span class="summary-count" id="countResolved">0</span>
-      </div>
+<div class="container">
+  <div class="summary-bar">
+    <div class="summary-box">
+      <span class="summary-label">Total</span>
+      <span class="summary-count" id="countTotal">0</span>
     </div>
-
-    <div class="dashboard-toolbar">
-      <div class="filter-group">
-        <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
-        <button class="filter-btn" onclick="setFilter('urgent', this)">Urgent</button>
-        <button class="filter-btn" onclick="setFilter('pending', this)">Pending</button>
-        <button class="filter-btn" onclick="setFilter('resolved', this)">Resolved</button>
-      </div>
-      <input type="text" id="searchBox" class="search-input" placeholder="Search complaints..." onkeyup="renderTickets()">
+    <div class="summary-box urgent-box">
+      <span class="summary-label">Urgent</span>
+      <span class="summary-count" id="countUrgent">0</span>
     </div>
-
-    <div id="ticketContainer" class="ticket-list">
-      <div class="empty-state">Connecting to cloud database...</div>
+    <div class="summary-box">
+      <span class="summary-label">In Progress</span>
+      <span class="summary-count" id="countProgress">0</span>
     </div>
-
+    <div class="summary-box">
+      <span class="summary-label">Resolved</span>
+      <span class="summary-count" id="countResolved">0</span>
+    </div>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+  <div class="dashboard-toolbar">
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('urgent', this)">Urgent</button>
+      <button class="filter-btn" onclick="setFilter('pending', this)">Pending</button>
+      <button class="filter-btn" onclick="setFilter('resolved', this)">Resolved</button>
+    </div>
+    <input type="text" id="searchBox" class="search-input" placeholder="Search complaints..." onkeyup="renderTickets()">
+  </div>
 
-    // PIN Protection prompt (Change "1234" to whatever PIN you want)
-    const userPin = prompt("Enter Office Security PIN:");
-    if (userPin !== "1234") {
-      alert("Incorrect PIN. Access Denied.");
-      document.body.innerHTML = "<h2 style='text-align:center; margin-top:100px; color:#dc2626;'>Access Denied. Unauthorized Office Entry.</h2>";
-      throw new Error("Unauthorized");
-    }
+  <div id="ticketContainer" class="ticket-list">
+    <div class="empty-state">Connecting to cloud database...</div>
+  </div>
+</div>
 
-   
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getDatabase, ref, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+  // PIN Protection prompt
+  const userPin = prompt("Enter Office Security PIN:");
+  if (userPin !== "1234") {
+    alert("Incorrect PIN. Access Denied.");
+    document.body.innerHTML = "<h2 style='text-align:center; margin-top:100px; color:#dc2626;'>Access Denied. Unauthorized Office Entry.</h2>";
+    throw new Error("Unauthorized");
+  }
 
   const firebaseConfig = {
-      apiKey: "AIzaSyC1IAAsuEYoPl7scNJHJzCKvx4FClXU_9w",
-      authDomain: "isg-maintenance.firebaseapp.com",
-      databaseURL: "https://isg-maintenance-default-rtdb.firebaseio.com",
-      projectId: "isg-maintenance",
-      storageBucket: "isg-maintenance.firebasestorage.app",
-      messagingSenderId: "529346188266",
-      appId: "1:529346188266:web:a7c57a306c6312cc3e5893",
-      measurementId: "G-RNVVLQZC7L"
-    };
+    apiKey: "AIzaSyC1IAAsuEYoPl7scNJHJzCKvx4FClXU_9w",
+    authDomain: "isg-maintenance.firebaseapp.com",
+    databaseURL: "https://isg-maintenance-default-rtdb.firebaseio.com",
+    projectId: "isg-maintenance",
+    storageBucket: "isg-maintenance.firebasestorage.app",
+    messagingSenderId: "529346188266",
+    appId: "1:529346188266:web:a7c57a306c6312cc3e5893",
+    measurementId: "G-RNVVLQZC7L"
+  };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+  const db = getDatabase(app);
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+  let globalTickets = [];
+  window.currentFilter = 'all';
 
-    let globalTickets = [];
-    window.currentFilter = 'all';
-
-    const ticketsRef = ref(db, 'tickets/');
-    onValue(ticketsRef, (snapshot) => {
-      const data = snapshot.val();
-      globalTickets = [];
-      
+  const ticketsRef = ref(db, 'tickets/');
+  onValue(ticketsRef, (snapshot) => {
+    const data = snapshot.val();
+    globalTickets = [];
+    if (data) {
       for (let id in data) {
         globalTickets.push({ id, ...data[id] });
       }
+    }
+    updateCounts(globalTickets);
+    renderTickets();
+  });
 
-      updateCounts(globalTickets);
-      renderTickets();
+  window.setFilter = function(filter, element) {
+    window.currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+    renderTickets();
+  };
+
+  window.updateStatus = function(id, newStatus) {
+    update(ref(db, `tickets/${id}`), { status: newStatus });
+  };
+
+  window.deleteTicket = function(id) {
+    if (confirm("Delete this ticket permanently?")) {
+      remove(ref(db, `tickets/${id}`));
+    }
+  };
+
+  function updateCounts(tickets) {
+    document.getElementById('countTotal').innerText = tickets.length;
+    document.getElementById('countUrgent').innerText = tickets.filter(t => t.urgency === 'Urgent').length;
+    document.getElementById('countProgress').innerText = tickets.filter(t => t.status === 'In Progress').length;
+    document.getElementById('countResolved').innerText = tickets.filter(t => t.status === 'Resolved').length;
+  }
+
+  window.renderTickets = function() {
+    const container = document.getElementById('ticketContainer');
+    const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+    container.innerHTML = '';
+
+    let filtered = globalTickets.filter(t => {
+      let matchesFilter = 
+        window.currentFilter === 'all' ? true :
+        window.currentFilter === 'urgent' ? t.urgency === 'Urgent' :
+        window.currentFilter === 'pending' ? t.status === 'Pending' :
+        window.currentFilter === 'resolved' ? t.status === 'Resolved' : true;
+
+      let matchesSearch = (t.teacher || '').toLowerCase().includes(searchTerm) || 
+                          (t.category || '').toLowerCase().includes(searchTerm) || 
+                          (t.details || '').toLowerCase().includes(searchTerm);
+
+      return matchesFilter && matchesSearch;
     });
 
-    window.setFilter = function(filter, element) {
-      window.currentFilter = filter;
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      element.classList.add('active');
-      renderTickets();
-    };
-
-    window.updateStatus = function(id, newStatus) {
-      update(ref(db, `tickets/${id}`), { status: newStatus });
-    };
-
-    window.deleteTicket = function(id) {
-      if (confirm("Delete this ticket permanently?")) {
-        remove(ref(db, `tickets/${id}`));
-      }
-    };
-
-    function updateCounts(tickets) {
-      document.getElementById('countTotal').innerText = tickets.length;
-      document.getElementById('countUrgent').innerText = tickets.filter(t => t.urgency === 'Urgent').length;
-      document.getElementById('countProgress').innerText = tickets.filter(t => t.status === 'In Progress').length;
-      document.getElementById('countResolved').innerText = tickets.filter(t => t.status === 'Resolved').length;
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="empty-state">No matching complaints found in the cloud database.</div>';
+      return;
     }
 
-    window.renderTickets = function() {
-      const container = document.getElementById('ticketContainer');
-      const searchTerm = document.getElementById('searchBox').value.toLowerCase();
-      
-      container.innerHTML = '';
+    filtered.forEach(t => {
+      const item = document.createElement('div');
+      item.className = `ticket-item ${t.urgency === 'Urgent' ? 'urgent' : ''} ${t.status === 'Resolved' ? 'resolved' : ''}`;
 
-      let filtered = globalTickets.filter(t => {
-        const matchesFilter = 
-          window.currentFilter === 'all' ? true :
-          window.currentFilter === 'urgent' ? t.urgency === 'Urgent' :
-          window.currentFilter === 'pending' ? t.status === 'Pending' :
-          window.currentFilter === 'resolved' ? t.status === 'Resolved' : true;
+      let badgeStatusClass = 'badge-pending';
+      if (t.status === 'In Progress') badgeStatusClass = 'badge-progress';
+      if (t.status === 'Resolved') badgeStatusClass = 'badge-resolved';
 
-        const matchesSearch = t.teacher.toLowerCase().includes(searchTerm) || 
-                              t.category.toLowerCase().includes(searchTerm) ||
-                              t.details.toLowerCase().includes(searchTerm);
-
-        return matchesFilter && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        container.innerHTML = '<div class="empty-state">No matching complaints found in the cloud database.</div>';
-        return;
-      }
-
-      filtered.forEach(t => {
-        const item = document.createElement('div');
-        item.className = `ticket-item ${t.urgency === 'Urgent' ? 'urgent' : ''} ${t.status === 'Resolved' ? 'resolved' : ''}`;
-
-        let badgeStatusClass = 'badge-pending';
-        if (t.status === 'In Progress') badgeStatusClass = 'badge-progress';
-        if (t.status === 'Resolved') badgeStatusClass = 'badge-resolved';
-
-        item.innerHTML = `
-          <div class="ticket-header">
-            <div>
-              <div class="ticket-title">${t.category}</div>
-              <div class="ticket-teacher">${t.teacher}</div>
-            </div>
-            <div>
-              <span class="status-badge ${t.urgency === 'Urgent' ? 'badge-urgent' : 'badge-regular'}">${t.urgency}</span>
-              <span class="status-badge ${badgeStatusClass}">${t.status}</span>
-            </div>
+      item.innerHTML = `
+        <div class="ticket-header">
+          <div>
+            <div class="ticket-title">${t.category}</div>
+            <div class="ticket-teacher">${t.teacher}</div>
           </div>
-          <div class="ticket-desc">${t.details}</div>
-          <div class="ticket-footer">
-            <span style="font-size: 0.75rem; color: #64748b;">ID: #${t.id.slice(-4)}</span>
-            <div class="status-controls">
-              ${t.status !== 'In Progress' && t.status !== 'Resolved' ? `<button onclick="updateStatus('${t.id}', 'In Progress')">Mark In Progress</button>` : ''}
-              ${t.status !== 'Resolved' ? `<button onclick="updateStatus('${t.id}', 'Resolved')">Mark Resolved</button>` : ''}
-              <button onclick="deleteTicket('${t.id}')" style="color: #c5221f;">Delete</button>
-            </div>
+          <div>
+            <span class="status-badge ${t.urgency === 'Urgent' ? 'badge-urgent' : 'badge-regular'}">${t.urgency}</span>
+            <span class="status-badge ${badgeStatusClass}">${t.status}</span>
           </div>
-        `;
-
-        container.appendChild(item);
-      });
-    };
-  </script>
+        </div>
+        <div class="ticket-desc">${t.details}</div>
+        <div class="ticket-footer">
+          <span style="font-size: 0.75rem; color: #64748b;">ID: #${t.id.slice(-4)}</span>
+          <div class="status-controls">
+            ${t.status !== 'In Progress' && t.status !== 'Resolved' ? `<button onclick="updateStatus('${t.id}', 'In Progress')">Mark In Progress</button>` : ''}
+            ${t.status !== 'Resolved' ? `<button onclick="updateStatus('${t.id}', 'Resolved')">Mark Resolved</button>` : ''}
+            <button onclick="deleteTicket('${t.id}')" style="color: #c5221f;">Delete</button>
+          </div>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+  };
+</script>
 </body>
 </html>
