@@ -7,131 +7,109 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background-color: #eef2f7; color: #2c3e50; padding-bottom: 40px; }
-    header { background-color: #0d233a; color: #ffffff; padding: 16px 30px; display: flex; align-items: center; gap: 15px; border-bottom: 4px solid #1a3a5c; }
-    .school-logo { width: 58px; height: 58px; object-fit: cover; background: white; border-radius: 50%; border: 2px solid #ffffff; }
+    header { background-color: #0d233a; color: #ffffff; padding: 16px 30px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .school-logo { width: 55px; height: 55px; object-fit: cover; background: white; border-radius: 50%; padding: 2px; }
     .brand-text h1 { font-size: 1.25rem; font-weight: 700; }
-    .brand-text p { font-size: 0.8rem; color: #92b0d5; margin-top: 2px; }
+    .brand-text p { font-size: 0.8rem; color: #92bod5; margin-top: 2px; }
     .container { max-width: 600px; margin: 40px auto; padding: 0 15px; }
-    .card { background: #ffffff; border: 1px solid #dcdfe6; border-radius: 6px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .card-title { font-size: 1.2rem; font-weight: 700; color: #0d233a; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: #34495e; margin-bottom: 6px; }
-    .form-control { width: 100%; padding: 10px 12px; font-size: 0.9rem; border: 1px solid #bdc3c7; border-radius: 4px; background-color: #fff; }
-    .form-control:focus { outline: none; border-color: #1a3a5c; box-shadow: 0 0 0 2px rgba(26, 58, 92, 0.15); }
-    .urgency-options { display: flex; gap: 10px; margin-top: 5px; }
-    .radio-btn { flex: 1; text-align: center; }
-    .radio-btn input { display: none; }
-    .radio-btn label { display: block; padding: 10px; font-size: 0.85rem; font-weight: 600; border: 1px solid #bdc3c7; border-radius: 4px; cursor: pointer; background: #f8fafc; color: #555; }
-    .radio-btn input:checked + label.urgent-label { background-color: #fce8e6; border-color: #d93025; color: #c5221f; }
-    .radio-btn input:checked + label.regular-label { background-color: #e8f0fe; border-color: #1a73e8; color: #174ea6; }
-    .btn-submit { width: 100%; background-color: #0d233a; color: white; padding: 12px; border: none; border-radius: 4px; font-weight: 600; font-size: 0.95rem; cursor: pointer; margin-top: 10px; }
-    .btn-submit:hover { background-color: #1a3a5c; }
+    .card { background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 30px; border-top: 5px solid #1e3c72; }
+    h2 { font-size: 1.4rem; color: #0d233a; margin-bottom: 8px; font-weight: 600; }
+    p.subtitle { font-size: 0.9rem; color: #6c757d; margin-bottom: 25px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; color: #495057; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+    input[type="text"], select, textarea { width: 100%; padding: 12px; border: 1.5px solid #ced4da; border-radius: 8px; font-size: 0.95rem; color: #495057; transition: border-color 0.2s; background: #fafbfc; }
+    input[type="text"]:focus, select:focus, textarea:focus { border-color: #1e3c72; outline: none; background: #fff; }
+    .urgency-group { display: flex; gap: 15px; margin-top: 5px; }
+    .urgency-option { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px; border: 1.5px solid #ced4da; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 500; background: #fafbfc; transition: all 0.2s; }
+    .urgency-option input { margin-right: 8px; }
+    .urgency-option:hover { background: #f1f3f5; }
+    button[type="submit"] { width: 100%; background: #1e3c72; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-top: 10px; }
+    button[type="submit"]:hover { background: #16305d; }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://play-lh.googleusercontent.com/GTrzlKTjPY5FmfHB4F1Mnn2bdIefIRXNAMBU9WGp4HcQ0QsFa1fA34gz3GdT7OcB9z6N1FNTuAHgwHQdPpVFSw=w600-h300-pc0xffffff-pd" alt="ISG Logo" class="school-logo">
-    <div class="brand-text">
-      <h1>Indian School Al Ghubra</h1>
-      <p>Teacher Maintenance Reporting Portal</p>
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Indian_School_Al_Ghubra_logo.png/220px-Indian_School_Al_Ghubra_logo.png" alt="ISG Logo" class="school-logo">
+      <div class="brand-text">
+        <h1>Indian School Al Ghubra</h1>
+        <p>Maintenance & Facility Helpdesk</p>
+      </div>
+    </div>
+    <div>
+      <a href="admin.html" style="color: #92bod5; text-decoration: none; font-size: 0.85rem; font-weight: 600; border: 1px solid #92bod5; padding: 6px 12px; border-radius: 6px;">Admin Login</a>
     </div>
   </header>
 
   <div class="container">
     <div class="card">
-      <h2 class="card-title">Submit a Maintenance Complaint</h2>
+      <h2>Submit Maintenance Request</h2>
+      <p class="subtitle">Please fill out the details below regarding classroom or facility issues.</p>
       
       <form id="issueForm">
         <div class="form-group">
-          <label for="teacherInfo">Teacher Name / Class and Section</label>
-          <input type="text" id="teacherInfo" class="form-control" required>
+          <label for="teacherInfo">Teacher Name & Location / Room No.</label>
+          <input type="text" id="teacherInfo" placeholder="e.g., Mr. John - Room 304" required>
         </div>
 
         <div class="form-group">
-          <label for="issueCategory">Type of Issue</label>
-          <select id="issueCategory" class="form-control" required>
-            <option value="">Select Category...</option>
-            <option value="AC Not Working">AC Not Working</option>
-            <option value="Fan Not Working">Fan Not Working</option>
-            <option value="Projector / Smart Board">Projector / Smart Board</option>
-            <option value="Furniture / Desk Repair">Furniture / Desk Repair</option>
-            <option value="Electrical & Lighting">Electrical & Lighting</option>
-            <option value="Other Maintenance">Other Maintenance</option>
+          <label for="issueCategory">Issue Category</label>
+          <select id="issueCategory" required>
+            <option value="" disabled selected>Select category...</option>
+            <option value="AC / Climate Control">AC / Climate Control</option>
+            <option value="Smart Board / Projector">Smart Board / Projector</option>
+            <option value="Lighting / Electrical">Lighting / Electrical</option>
+            <option value="Plumbing / Restroom">Plumbing / Restroom</option>
+            <option value="Furniture / Fixtures">Furniture / Fixtures</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
         <div class="form-group">
           <label>Urgency Level</label>
-          <div class="urgency-options">
-            <div class="radio-btn">
-              <input type="radio" name="urgency" id="urgencyRegular" value="Regular" checked>
-              <label for="urgencyRegular" class="regular-label">Non-Urgent</label>
-            </div>
-            <div class="radio-btn">
-              <input type="radio" name="urgency" id="urgencyHigh" value="Urgent">
-              <label for="urgencyHigh" class="urgent-label">Urgent</label>
-            </div>
+          <div class="urgency-group">
+            <label class="urgency-option">
+              <input type="radio" name="urgency" value="Regular" id="urgencyRegular" checked> Regular
+            </label>
+            <label class="urgency-option" style="border-color: #e67e22; color: #d35400;">
+              <input type="radio" name="urgency" value="High"> High
+            </label>
+            <label class="urgency-option" style="border-color: #c0392b; color: #c0392b;">
+              <input type="radio" name="urgency" value="Emergency"> Emergency
+            </label>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="issueDetails">Problem Description</label>
-          <textarea id="issueDetails" class="form-control" rows="4" placeholder="Briefly describe the defect..."></textarea>
+          <label for="issueDetails">Issue Details / Description</label>
+          <textarea id="issueDetails" rows="4" placeholder="Describe the problem clearly..."></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Submit Complaint to Office</button>
+        <button type="submit">Submit Complaint to Office</button>
       </form>
     </div>
   </div>
 
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyC1IAAsUEyOP17scNJHJZckVx4FClXU_9w",
-    authDomain: "isg-maintenance.firebaseapp.com",
-    databaseURL: "https://isg-maintenance-default-rtdb.firebaseio.com",
-    projectId: "isg-maintenance",
-    storageBucket: "isg-maintenance.firebasestorage.app",
-    messagingSenderId: "529346188266",
-    appId: "1:529346188266:web:a7c57a306c6312cc3e5893"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyC1IAAsUEyOP17scNJHJZckVx4FClXU_9w",
+      authDomain: "isg-maintenance.firebaseapp.com",
+      databaseURL: "https://isg-maintenance-default-rtdb.firebaseio.com",
+      projectId: "isg-maintenance",
+      storageBucket: "isg-maintenance.firebasestorage.app",
+      messagingSenderId: "529346188266",
+      appId: "1:529346188266:web:a7c57a306c6312cc3e5893"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-
-  const issueForm = document.getElementById('issueForm');
-issueForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  console.log("Form submit button clicked!"); // <--- Add this
-
-  const newTicket = {
-    teacher: document.getElementById('teacherInfo').value,
-    category: document.getElementById('issueCategory').value,
-    urgency: document.querySelector('input[name="urgency"]:checked').value,
-    details: document.getElementById('issueDetails').value || "No additional comments provided.",
-    status: "Pending",
-    timestamp: Date.now()
-  };
-
-  console.log("Attempting to push to Firebase...", newTicket); // <--- Add this
-
-  push(ref(db, 'tickets/'), newTicket)
-    .then(() => {
-      console.log("Successfully pushed to database!"); // <--- Add this
-      alert("Complaint successfully sent to the office!");
-      issueForm.reset();
-      document.getElementById('urgencyRegular').checked = true;
-    })
-    .catch((error) => {
-      console.error("Firebase error:", error); // <--- Add this
-      alert("Error sending ticket: " + error.message);
-    });
-});
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
     const issueForm = document.getElementById('issueForm');
+    
     issueForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
