@@ -103,6 +103,35 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
+    onst issueForm = document.getElementById('issueForm');
+issueForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  console.log("Form submit button clicked!"); // <--- Add this
+
+  const newTicket = {
+    teacher: document.getElementById('teacherInfo').value,
+    category: document.getElementById('issueCategory').value,
+    urgency: document.querySelector('input[name="urgency"]:checked').value,
+    details: document.getElementById('issueDetails').value || "No additional comments provided.",
+    status: "Pending",
+    timestamp: Date.now()
+  };
+
+  console.log("Attempting to push to Firebase...", newTicket); // <--- Add this
+
+  push(ref(db, 'tickets/'), newTicket)
+    .then(() => {
+      console.log("Successfully pushed to database!"); // <--- Add this
+      alert("Complaint successfully sent to the office!");
+      issueForm.reset();
+      document.getElementById('urgencyRegular').checked = true;
+    })
+    .catch((error) => {
+      console.error("Firebase error:", error); // <--- Add this
+      alert("Error sending ticket: " + error.message);
+    });
+});
+
     const issueForm = document.getElementById('issueForm');
     issueForm.addEventListener('submit', function(e) {
       e.preventDefault();
